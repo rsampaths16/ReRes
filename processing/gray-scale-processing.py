@@ -7,9 +7,9 @@ from numpy import random
 
 random.seed(0)
 SIZE = 128
-ORIGINAL = 'data/sample-data/black-and-white-images/original'
-HIGH = 'data/sample-data/black-and-white-images/train/high'
-LOW = 'data/sample-data/black-and-white-images/train/low'
+ORIGINAL = '../data/offline-data/black-and-white-images/original'
+HIGH = '../data/offline-data/black-and-white-images/train/high'
+LOW = '../data/offline-data/black-and-white-images/train/low'
 
 def sample_patch(image):
     x = random.randint(0, image.shape[0] - SIZE, dtype=numpy.int)

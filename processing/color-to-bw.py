@@ -4,7 +4,7 @@ import os
 import numpy
 import cv2
 
-ORIGINAL = 'data/sample-data/black-and-white-images/original/images'
+ORIGINAL = '../data/offline-data/black-and-white-images/original/images'
 #BW_IMAGES = 'data/sample-data/black-and-white-images/bw-images'
 
 unique_id = 1

@@ -12,11 +12,11 @@ from keras.optimizers import SGD
 from keras.losses import squared_hinge
 
 random.seed(0)
-n_train = 256
+n_train = 30
 batch_size = 32
 
-HIGH = 'data/sample-data/black-and-white-images/train/high'
-LOW = 'data/sample-data/black-and-white-images/train/low'
+HIGH = '../../data/offline-data/black-and-white-images/train/high'
+LOW = '../../data/offline-data/black-and-white-images/train/low'
 N_CHANNEL = 1
 
 def unet():
@@ -128,11 +128,11 @@ for x in range(128):
             y_train[z][x][y][1] = 255
 '''
 gap = numpy.ones((128, 16, N_CHANNEL)) * 255
-epoch = 130
-cnn.load_weights('my_weights.h5')
+epoch = 1
+cnn.load_weights('../../weights/my_weights.h5')
 while True:
     cnn.fit(x_train, y_train, batch_size=batch_size, verbose=2)
-    cnn.save_weights('my_weights.h5')
+    cnn.save_weights('../../weights/my_weights.h5')
     for sample in range(1, 8):
         image_id = random.randint(0, n_train)
         #image_id = sample - 1
@@ -149,6 +149,6 @@ while True:
         to_save = numpy.concatenate((foriginal, gap, original, gap, predicted, gap, predicted2), axis=1)
         print to_save.shape
         #misc.imsave('data/sample-data/black-and-white-images/results/epoch-' + str(epoch) + '-sample-' + str(sample) + '.jpg', to_save)
-        cv2.imwrite('data/sample-data/black-and-white-images/results/epoch-' + str(epoch) + '-sample-' + str(sample) + '.jpg', to_save)
+        cv2.imwrite('../../data/offline-data/black-and-white-images/results/epoch-' + str(epoch) + '-sample-' + str(sample) + '.jpg', to_save)
     epoch += 1
 
